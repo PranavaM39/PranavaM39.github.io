@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pranava Manthena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf9f4;
+    --ink: #1c1c1c;
+    --muted: #6b6358;
+    --rule: #e4e0d6;
+    --accent: #8a3a1c;
+    --accent-soft: rgba(138, 58, 28, 0.32);
+  }
+ 
+  * { box-sizing: border-box; }
+ 
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+  }
+ 
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', 'Baskerville', 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    font-weight: 400;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  }
+ 
+  main {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 110px 32px 140px;
+  }
+ 
+  /* Header — name + tagline */
+  header {
+    margin-bottom: 72px;
+  }
+ 
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    letter-spacing: -0.005em;
+  }
+ 
+  .tagline {
+    font-style: italic;
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+ 
+  /* Section labels — small, monospaced, restrained */
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 56px 0 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+ 
+  /* Body prose */
+  p {
+    margin: 0 0 1.4em;
+  }
+ 
+  em {
+    font-style: italic;
+  }
+ 
+  /* The opening — slightly larger, sets the tone */
+  .lede p {
+    font-size: 19px;
+    line-height: 1.7;
+  }
+ 
+  /* Drop cap on first paragraph — subtle, elegant */
+  .lede p:first-child::first-letter {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 52px;
+    float: left;
+    line-height: 0.92;
+    padding: 8px 10px 0 0;
+    font-weight: 400;
+    color: var(--accent);
+  }
+ 
+  /* Soft highlight, like ink slightly bleeding under a phrase */
+  .highlight {
+    background: linear-gradient(180deg, transparent 62%, rgba(138, 58, 28, 0.13) 62%, rgba(138, 58, 28, 0.13) 92%, transparent 92%);
+    padding: 0 2px;
+  }
+ 
+  /* Links — restrained, with a thin underline that warms on hover */
+  a {
+    color: var(--ink);
+    text-decoration: none;
+    background-image: linear-gradient(to bottom, transparent 91%, rgba(28, 28, 28, 0.4) 91%, rgba(28, 28, 28, 0.4) 94%, transparent 94%);
+    background-repeat: no-repeat;
+    transition: color 0.25s ease, background-image 0.25s ease;
+    padding-bottom: 1px;
+  }
+ 
+  a:hover {
+    color: var(--accent);
+    background-image: linear-gradient(to bottom, transparent 91%, var(--accent-soft) 91%, var(--accent-soft) 94%, transparent 94%);
+  }
+ 
+  /* The work list — quiet rows, no boxes */
+  .work {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+ 
+  .work-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+ 
+  .work-item:last-child {
+    border-bottom: none;
+  }
+ 
+  .work-name {
+    font-weight: 700;
+    font-size: 17px;
+  }
+ 
+  .work-desc {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 2px;
+    line-height: 1.55;
+  }
+ 
+  .work-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+ 
+  /* Talks — compact list, italic titles */
+  .talks {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+ 
+  .talks li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+ 
+  .talks li:last-child { border-bottom: none; }
+ 
+  .talks .talk-title {
+    color: var(--ink);
+    font-style: italic;
+  }
+ 
+  .talks .talk-venue {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-left: 2px;
+  }
+ 
+  /* Currently — small, italic, set apart */
+  .currently {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 16.5px;
+    line-height: 1.7;
+  }
+ 
+  /* Footer — minimal contact */
+  footer {
+    margin-top: 88px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+ 
+  footer .contact-links {
+    display: flex;
+    gap: 22px;
+  }
+ 
+  footer .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+ 
+  /* Quiet, slow fade in */
+  main {
+    opacity: 0;
+    animation: fade 1.1s ease 0.1s forwards;
+  }
+ 
+  @keyframes fade {
+    to { opacity: 1; }
+  }
+ 
+  /* Soft staggered reveal of major blocks */
+  main > * {
+    opacity: 0;
+    transform: translateY(4px);
+    animation: rise 0.9s ease forwards;
+  }
+  main > *:nth-child(1) { animation-delay: 0.15s; }
+  main > *:nth-child(2) { animation-delay: 0.3s; }
+  main > *:nth-child(3) { animation-delay: 0.4s; }
+  main > *:nth-child(4) { animation-delay: 0.48s; }
+  main > *:nth-child(5) { animation-delay: 0.55s; }
+  main > *:nth-child(6) { animation-delay: 0.6s; }
+  main > *:nth-child(7) { animation-delay: 0.65s; }
+  main > *:nth-child(8) { animation-delay: 0.7s; }
+  main > *:nth-child(9) { animation-delay: 0.75s; }
+  main > *:nth-child(10) { animation-delay: 0.8s; }
+ 
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+ 
+  ::selection {
+    background: rgba(138, 58, 28, 0.18);
+    color: var(--ink);
+  }
+ 
+  @media (max-width: 540px) {
+    main { padding: 70px 26px 90px; }
+    body { font-size: 16px; }
+    h1 { font-size: 22px; }
+    .tagline { font-size: 16px; }
+    .lede p { font-size: 17.5px; }
+    .work-item { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+    .work-year { padding-top: 0; }
+    .lede p:first-child::first-letter { font-size: 44px; }
+    footer { flex-direction: column; gap: 10px; }
+  }
+ 
+  @media (prefers-reduced-motion: reduce) {
+    main, main > * { opacity: 1; transform: none; animation: none; }
+  }
+</style>
+</head>
+<body>
+ 
+<main>
+ 
+  <header>
+    <h1>Pranava Manthena</h1>
+    <p class="tagline">A student, founder, and occasional optimist —<br>building things at the edges of AI and climate.</p>
+  </header>
+ 
+  <section class="lede">
+    <p>I'm a freshman at NYU Stern, studying Business, Technology, and Entrepreneurship. I've been starting things since I was fourteen — a web design agency, an aluminum-air battery, an edtech startup, a state-wide org of fifteen thousand students. <span class="highlight">Some of them worked. Some of them didn't.</span> The ones that didn't taught me more.</p>
+    <p>Right now I'm working on a project to <em>meaningfully accelerate the workflow of journalists</em> in the modern media industry. I think the next decade of software belongs to the people who can sit with a problem long enough to actually understand it, and I'd like to be one of them.</p>
+  </section>
+ 
+  <h2>Work</h2>
+  <ul class="work">
+    <li class="work-item">
+      <div>
+        <div class="work-name">Solon AI</div>
+        <div class="work-desc">co-founder, CEO. an edtech startup that personalized learning by linking new concepts to students' interests. 150+ beta users, 40+ user interviews.</div>
+      </div>
+      <span class="work-year">2024 — 25</span>
+    </li>
+    <li class="work-item">
+      <div>
+        <div class="work-name">A1 Web Solutions</div>
+        <div class="work-desc">founder. started at fourteen building free websites for local businesses, eventually paid clients. where I learned to actually ship.</div>
+      </div>
+      <span class="work-year">2021 — 25</span>
+    </li>
+    <li class="work-item">
+      <div>
+        <div class="work-name">Florida FBLA</div>
+        <div class="work-desc">state president, serving 15,000 members. built FBLA GPT, ran an AI hackathon, directed the state conference for 6,000 attendees.</div>
+      </div>
+      <span class="work-year">2024 — 25</span>
+    </li>
+    <li class="work-item">
+      <div>
+        <div class="work-name">SkyVolt</div>
+        <div class="work-desc">product lead. an aluminum-air battery prototype for disaster-relief energy. raised $2K, verified by two engineering firms, built in a month.</div>
+      </div>
+      <span class="work-year">2023 — 24</span>
+    </li>
+    <li class="work-item">
+      <div>
+        <div class="work-name">AI for Education</div>
+        <div class="work-desc">student community lead. ran summits with 2,100+ live attendees and reached students across 100+ countries.</div>
+      </div>
+      <span class="work-year">2024 — 25</span>
+    </li>
+    <li class="work-item">
+      <div>
+        <div class="work-name">FRC Robotics</div>
+        <div class="work-desc">pitch lead. won the Rising All-Star award at worlds (1 of 75). helped grow the team 5x and raise $60K in sponsorships.</div>
+      </div>
+      <span class="work-year">2022 — 25</span>
+    </li>
+  </ul>
+ 
+  <h2>Talks</h2>
+  <ul class="talks">
+    <li>
+      <span class="talk-title">Emotional Intelligence in an AI-Driven World</span>
+      <span class="talk-venue">— TEDx, 2024</span>
+    </li>
+    <li>
+      <span class="talk-title">AI &amp; the Future of Education</span>
+      <span class="talk-venue">— IIT Global Summit, 2024</span>
+    </li>
+    <li>
+      <span class="talk-title">Policy Meets the Algorithm</span>
+      <span class="talk-venue">— GovAI Summit</span>
+    </li>
+    <li>
+      <span class="talk-title">Voice as the Next Interface</span>
+      <span class="talk-venue">— VoiceAI &amp; Chipp Con Fargo</span>
+    </li>
+  </ul>
+ 
+  <h2>Currently</h2>
+  <p class="currently">Living in New York. Studying. Building the journalism project. Sketching when I can. Playing frisbee, badly. Slowly trying to see every neighborhood in this city, one walk at a time.</p>
+ 
+  <footer>
+    <span class="contact-links">
+      <a href="mailto:pranava.manthena@stern.nyu.edu">email</a>
+      <a href="https://www.linkedin.com/in/pranava-manthena-392650272" target="_blank" rel="noopener">linkedin</a>
+    </span>
+    <span class="meta">New York · 2026</span>
+  </footer>
+ 
+</main>
+ 
+</body>
+</html>
